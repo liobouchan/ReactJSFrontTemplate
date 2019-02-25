@@ -26,17 +26,24 @@ class Board extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            squares: Array(9).fill(null)
+            squares: Array(9).fill(null),
+            xIsNext: true,
         };
     }
 
     handleClick(i){
         const squares = this.state.squares.slice();
-        squares[i] = 'X';
-        this.setState({squares: squares});
+        squares[i] = this.state.xIsNext ? 'X' : 'O';
+        console.log("Primer xIsNext: " + this.state.xIsNext )
+        this.setState({
+            squares: squares,
+            xIsNext: !this.state.xIsNext
+        });
         console.log("Posicion a editar: " + i);
-        console.log("this" + this.state.squares);
-        console.log("Squares const" + squares);
+        console.log("Lista Actual: " + this.state.squares);
+        console.log("Lista Final: " + squares);
+        console.log("Último xIsNext: " + this.state.xIsNext )
+        console.log("\n")
         
         
     }
@@ -51,7 +58,7 @@ class Board extends React.Component {
     }
 
     render() {
-        const status = 'Next player: X';
+        const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
             return (
                 <div>
                     <div className="status">{status}</div>
