@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import { browserHistory } from 'react-router';
 import HomePage from './HomePage';
 import NavBar from './HeaderComponent/NavBar';
+import Footer from './Footer';
 
 class App extends Component {
     render() {
@@ -12,6 +13,8 @@ class App extends Component {
             <NavBar />
             <Route name="home" exact path="/" component={HomePage} />
             </div>
+            <HomePage/>
+            <Footer/>
         </Router>
         )
     }
